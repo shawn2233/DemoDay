@@ -1,0 +1,12 @@
+body{
+    padding-top:80px;
+    word-wrap:break-word;
+    background-color: rgba(20	40	72	);
+    color: white;
+  }
+div.well{
+    background-color: black;
+}
+.col-sm-6 {
+  width: 81%;
+}
