@@ -12,6 +12,13 @@ var userSchema = mongoose.Schema({
     phone : String,
     birthday : String,
 
+    friends : [],
+
+    title : String,
+    desc : String,
+    date : String,
+    priority : String,
+
 
 
     local            : {

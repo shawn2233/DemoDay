@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Tables - SB Admin Pro</title>
+        <title>Calendar LinkUp</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="styles2.css" rel="stylesheet" />
         <link rel="stylesheet" href="calendar.css">
@@ -14,6 +14,7 @@
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-gray-500" id="sidenavAccordion">
@@ -268,10 +269,10 @@
                                     </a>
                                     <div class="collapse" id="appsCollapseUserManagement" data-bs-parent="#accordionSidenavAppsMenu">
                                         <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/list">Friend List</a>
-                                            <!-- <a class="nav-link" href="user-management-edit-user.html">Edit User</a> -->
-                                            <a class="nav-link" href="/add">Add Friend</a>
-                                            <a class="nav-link" href="/friends">Party List</a>
+                                            <a class="nav-link" href="/friends">Friend List</a>
+                                        <!-- <a class="nav-link" href="user-management-edit-user.html">Edit User</a> -->
+                                        <a class="nav-link" href="/add">Add Friend</a>
+                                        <a class="nav-link" href="/list">Party List</a>
                                             <!-- <a class="nav-link" href="user-management-org-details.html">Organization Details</a> -->
                                         </nav>
                                     </div>
@@ -354,7 +355,7 @@
                         <div class="card mb-4">
                             <div class="card-header">Extended Calendar</div>
                             <div class="card-body">
-
+                                
                             <div id="calBox">
                                 <script>
                                     // fill the month table with column headings
@@ -391,7 +392,7 @@
                                       // fill the first week of days
                                       for (var i = start_day; i < 8; i++) {
                                         document.write(
-                                          "<div data-day='2022-" +
+                                          "<div data-day='2023-" +
                                             indexMonth +
                                             "-0" +
                                             day +
@@ -409,7 +410,7 @@
                                         for (var i = 1; i <= 7 && day <= month_length; i++) {
                                           if (day >= 1 && day <= 9) {
                                             document.write(
-                                              "<div data-day='2022-" +
+                                              "<div data-day='2023-" +
                                                 indexMonth +
                                                 "-0" +
                                                 day +
@@ -420,7 +421,7 @@
                                             day++;
                                           } else {
                                             document.write(
-                                              "<div data-day='2022-" +
+                                              "<div data-day='2023-" +
                                                 indexMonth +
                                                 "-" +
                                                 day +
@@ -443,7 +444,7 @@
                                     <div class="wrapper">
                                       <div class="c-monthyear">
                                       <div class="c-month">
-                                          <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span>
+                                          <span id="prev" class="prev" aria-hidden="true">⬅️</span>
                                           <div id="c-paginator">
                                             <span class="c-paginator__month">JANUARY</span>
                                             <span class="c-paginator__month">FEBRUARY</span>
@@ -458,9 +459,9 @@
                                             <span class="c-paginator__month">NOVEMBER</span>
                                             <span class="c-paginator__month">DECEMBER</span>
                                           </div>
-                                          <span id="next" class="next fa fa-angle-right" aria-hidden="true"></span>
+                                          <span id="next" class="next" aria-hidden="true">➡️</span>
                                         </div>
-                                        <span class="c-paginator__year">2022</span>
+                                        <span class="c-paginator__year">2023</span>
                                       </div>
                                       <div class="c-sort">
                                         <a class="o-btn c-today__btn" href="javascript:;">TODAY</a>
@@ -481,7 +482,7 @@
                                         <script>
                                         
                                         // CAHNGE the below variable to the CURRENT YEAR
-                                        year = 2022;
+                                        year = 2023;
                                   
                                         // first day of the week of the new year
                                         today = new Date("January 1, " + year);
@@ -528,14 +529,14 @@
                             <div class="row g-0">
                                 <!-- <div class="col-auto card-icon-aside bg-primary"><i class="me-1 text-white-50" data-feather="alert-triangle"></i></div> -->
                                 <div class="col">
-                                    <!-- <div class="card-body py-5">
-                                        <h5 class="card-title">Third-Party Documentation Available</h5>
+                                    <!-- <div class="card-body py-5"> -->
+                                        <!-- <h5 class="card-title">Third-Party Documentation Available</h5>
                                         <p class="card-text">Simple DataTables is a third party plugin that is used to generate the demo table above. For more information about how to use Simple DataTables with your project, please visit the official documentation.</p>
                                         <a class="btn btn-primary btn-sm" href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">
                                             <i class="me-1" data-feather="external-link"></i>
                                             Visit Simple DataTables Docs
-                                        </a>
-                                    </div> -->
+                                        </a> -->
+                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>
@@ -560,5 +561,14 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables/datatables-simple-demo.js"></script>
         <script src="js/calendar.js"></script>
+        <script>
+            window.onload = function() {
+            const events = <%-JSON.stringify(events)%>
+            for(let i = 0; i< events.length; i++) {
+                console.log(events[i])
+        defaultEvents(events[i].date, events[i].title, events[i].note, events[i].tag);
+            }
+        }
+        </script>
     </body>
 </html>

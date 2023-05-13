@@ -266,10 +266,10 @@
                                     </a>
                                     <div class="collapse" id="appsCollapseUserManagement" data-bs-parent="#accordionSidenavAppsMenu">
                                         <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/list">Friend List</a>
+                                            <a class="nav-link" href="/friends">Friend List</a>
                                             <!-- <a class="nav-link" href="user-management-edit-user.html">Edit User</a> -->
                                             <a class="nav-link" href="/add">Add Friend</a>
-                                            <a class="nav-link" href="/friends">Party List</a>
+                                            <a class="nav-link" href="/list">Party List</a>
                                             <!-- <a class="nav-link" href="user-management-org-details.html">Organization Details</a> -->
                                         </nav>
                                     </div>
@@ -338,12 +338,27 @@
                                 <div class="row align-items-center justify-content-between pt-3">
                                     <div class="col-auto mb-3">
                                         <h1 class="page-header-title">
+
+
+                                            <!-- <form action="/add" method="GET" >
+                                                <input type="text" name="search">
+                                                <button type="submit">submit</button>
+                                            </form>
+                                            <ul>
+                                            <% for(let i =0; i<userSearchResults.length; i++){
+                                                console.log(userSearchResults[i]._id.toString(),user.friends)
+                                                %>
+                                                <li><span data-userid="<%=userSearchResults[i]._id%>" class="addFriend"><%=userSearchResults[i].firstname%></span><i class="<%=user.friends.find(friendid => friendid.toString()=== userSearchResults[i]._id.toString())? 'fa-solid' : 'fa-regular'%> fa-heart"></i></li>
+                                            <%}%>
+                                        </ul> -->
+
+
                                             <div class="page-header-icon"><i data-feather="user-plus"></i></div>
                                             Add Friend
                                         </h1>
                                     </div>
                                     <div class="col-12 col-xl-auto mb-3">
-                                        <a class="btn btn-sm btn-light text-primary" href="/list">
+                                        <a class="btn btn-sm btn-light text-primary" href="/friends">
                                             <i class="me-1" data-feather="arrow-left"></i>
                                             Back to Friend List
                                         </a>
@@ -358,43 +373,61 @@
                             <div class="col-xl-4">
                                 <!-- Profile picture card-->
                                 <div class="card mb-4 mb-xl-0">
-                                    <div class="card-header">Profile Picture</div>
+                                    <div class="card-header">Find a Friend</div>
                                     <div class="card-body text-center">
+                                        <form action="/add" method="GET" >
+                                            <input type="text" name="search">
+                                            <button type="submit">submit</button>
+                                        </form>
+                                        <ul>
+                                        <% for(let i = 0; i<userSearchResults.length; i++){
+                                            console.log(userSearchResults[i]._id.toString(),user.friends)
+                                            %>
+                                            <li><span data-userid="<%=userSearchResults[i]._id%>" class="addFriend"><%=userSearchResults[i].firstname%></span><i class="<%=user.friends.find(friendid => friendid.toString()=== userSearchResults[i]._id.toString())? 'fa-solid' : 'fa-regular'%> fa-heart"></i></li>
+                                        <%}%>
+                                    </ul>
                                         <!-- Profile picture image-->
-                                        <img class="img-account-profile rounded-circle mb-2" src="assets/img/demo/user-placeholder.svg" alt="" />
+                                        <!-- <img class="img-account-profile rounded-circle mb-2" src="assets/img/demo/user-placeholder.svg" alt="" /> -->
                                         <!-- Profile picture help block-->
-                                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                        <!-- <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div> -->
                                         <!-- Profile picture upload button-->
-                                        <button class="btn btn-primary" type="button">Upload new image</button>
+                                        <!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-8">
                                 <!-- Account details card-->
                                 <div class="card mb-4">
-                                    <div class="card-header">Account Details</div>
+                                    <div class="card-header">Friend List?</div>
                                     <div class="card-body">
-                                        <form>
+                                        <ul>
+                                            <% for(let i = 0; i<userSearchResults.length; i++){
+                                                console.log(userSearchResults[i]._id.toString(),user.friends)
+                                                %>
+                                                <li><span data-userid="<%=userSearchResults[i]._id%>" class="addFriend"><%=userSearchResults[i].firstname%></span><i class="<%=user.friends.find(friendid => friendid.toString()=== userSearchResults[i]._id.toString())? 'fa-solid' : 'fa-regular'%> fa-heart"></i></li>
+                                            <%}%>
+                                        </ul>
+                                        <!-- <form> -->
                                             <!-- Form Row-->
-                                            <div class="row gx-3 mb-3">
+                                            <!-- <div class="row gx-3 mb-3"> -->
                                                 <!-- Form Group (first name)-->
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="small mb-1" for="inputFirstName">First name</label>
                                                     <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="" />
-                                                </div>
+                                                </div> -->
                                                 <!-- Form Group (last name)-->
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="small mb-1" for="inputLastName">Last name</label>
                                                     <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="" />
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <!-- Form Group (email address)-->
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
                                                 <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="" />
-                                            </div>
+                                            </div> -->
                                             <!-- Form Group (Group Selection Checkboxes)-->
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label class="small mb-1">Group(s)</label>
                                                 <div class="form-check">
                                                     <input class="form-check-input" id="groupSales" type="checkbox" value="" />
@@ -416,9 +449,9 @@
                                                     <input class="form-check-input" id="groupCustomer" type="checkbox" value="" />
                                                     <label class="form-check-label" for="groupCustomer">Customer</label>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <!-- Form Group (Roles)-->
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label class="small mb-1">Role</label>
                                                 <select class="form-select" aria-label="Default select example">
                                                     <option selected disabled>Select a role:</option>
@@ -427,10 +460,10 @@
                                                     <option value="edtior">Editor</option>
                                                     <option value="guest">Guest</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                             <!-- Submit button-->
-                                            <button class="btn btn-primary" type="button">Add user</button>
-                                        </form>
+                                            <!-- <button class="btn btn-primary" type="button">Add user</button> -->
+                                        <!-- </form> -->
                                     </div>
                                 </div>
                             </div>
@@ -453,5 +486,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script src="userAdd.js"></script>
     </body>
 </html>

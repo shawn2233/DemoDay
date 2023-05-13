@@ -267,10 +267,10 @@
                                     </a>
                                     <div class="collapse" id="appsCollapseUserManagement" data-bs-parent="#accordionSidenavAppsMenu">
                                         <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/list">Friend List</a>
-                                            <!-- <a class="nav-link" href="user-management-edit-user.html">Edit User</a> -->
-                                            <a class="nav-link" href="/add">Add Friend</a>
-                                            <a class="nav-link" href="/friends">Party List</a>
+                                            <a class="nav-link" href="/friends">Friend List</a>
+                                        <!-- <a class="nav-link" href="user-management-edit-user.html">Edit User</a> -->
+                                        <a class="nav-link" href="/add">Add Friend</a>
+                                        <a class="nav-link" href="/list">Party List</a>
                                             <!-- <a class="nav-link" href="user-management-org-details.html">Organization Details</a> -->
                                         </nav>
                                     </div>
@@ -326,7 +326,7 @@
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
                             <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title"><%=user.local.email %></div>
+                            <div class="sidenav-footer-title"><%=user.firstname%></div>
                         </div>
                     </div>
                 </nav>
@@ -375,6 +375,16 @@
                                             <div class="me-3">
                                                 <i class="fa-regular fa-calendar fa-beat fa-2xl" style="color: #2a6f2b;"></i>
                                                 <h5>Calendar Widget</h5>
+                                                <ul class="events">
+                                                    <% for(var i=0; i<events.length; i++) {%>
+                                                      <li class="event">
+                                                        <span><%= events[i].title%></span>
+                                                        <span><%= events[i].date%></span>
+                                                        <span><%= events[i].note%></span>
+                                                        <span data-eventid="<%= events[i]._id %>" class="trash"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                      </li>
+                                                    <% } %>
+                                                    </ul>
                                                 <!-- <div class="text-muted small">To keep you on track when working with our toolkit</div> -->
                                             </div>
                                             <!-- <img src="assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" /> -->
@@ -421,139 +431,28 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Date</th>
-                                                            <th>Event</th>
-                                                            <th>Time</th>
+                                                            <th>Title</th>
+                                                            <th>Note</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
                                                             <th>Date</th>
-                                                            <th>Event</th>
-                                                            <th>Time</th>
+                                                            <th>Title</th>
+                                                            <th>Note</th>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
+                                                        <% for(var i=0; i<events.length; i++) {%>
                                                         <tr>
-                                                            <td>01/13/20</td>
+                                                            <td><%= events[i].date %></td>
                                                             <td>
                                                                 <i class="me-2 text-green" data-feather="zap"></i>
-                                                                Server online
+                                                                <%= events[i].title%>
                                                             </td>
-                                                            <td>1:21 AM</td>
+                                                            <td><%= events[i].note %></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>01/13/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-red" data-feather="zap-off"></i>
-                                                                Server restarted
-                                                            </td>
-                                                            <td>1:00 AM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/12/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-purple" data-feather="shopping-cart"></i>
-                                                                New order placed! Order #
-                                                                <a href="#!">1126550</a>
-                                                            </td>
-                                                            <td>5:45 AM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/12/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-blue" data-feather="user"></i>
-                                                                Valerie Luna submitted
-                                                                <a href="#!">quarter four report</a>
-                                                            </td>
-                                                            <td>4:23 PM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/12/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-yellow" data-feather="database"></i>
-                                                                Database backup created
-                                                            </td>
-                                                            <td>3:51 AM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/12/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-purple" data-feather="shopping-cart"></i>
-                                                                New order placed! Order #
-                                                                <a href="#!">1126549</a>
-                                                            </td>
-                                                            <td>1:22 AM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/11/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-blue" data-feather="user-plus"></i>
-                                                                New user created:
-                                                                <a href="#!">Sam Malone</a>
-                                                            </td>
-                                                            <td>4:18 PM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/11/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-purple" data-feather="shopping-cart"></i>
-                                                                New order placed! Order #
-                                                                <a href="#!">1126548</a>
-                                                            </td>
-                                                            <td>4:02 PM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/11/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-purple" data-feather="shopping-cart"></i>
-                                                                New order placed! Order #
-                                                                <a href="#!">1126547</a>
-                                                            </td>
-                                                            <td>3:47 PM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/11/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-green" data-feather="zap"></i>
-                                                                Server online
-                                                            </td>
-                                                            <td>1:19 AM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/11/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-red" data-feather="zap-off"></i>
-                                                                Server restarted
-                                                            </td>
-                                                            <td>1:00 AM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/10/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-purple" data-feather="shopping-cart"></i>
-                                                                New order placed! Order #
-                                                                <a href="#!">1126547</a>
-                                                            </td>
-                                                            <td>5:31 PM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/10/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-purple" data-feather="shopping-cart"></i>
-                                                                New order placed! Order #
-                                                                <a href="#!">1126546</a>
-                                                            </td>
-                                                            <td>12:13 PM</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>01/10/20</td>
-                                                            <td>
-                                                                <i class="me-2 text-blue" data-feather="user"></i>
-                                                                Diane Chambers submitted
-                                                                <a href="#!">quarter four report</a>
-                                                            </td>
-                                                            <td>10:56 AM</td>
-                                                        </tr>
+                                                        <% } %>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -579,7 +478,7 @@
                                         <div class="card card-header-actions h-100">
                                             <div class="card-header">
                                                 Recent Activity
-                                                <div class="dropdown no-caret">
+                                                <!-- <div class="dropdown no-caret">
                                                     <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
                                                     <div class="dropdown-menu dropdown-menu-end animated--fade-in-up" aria-labelledby="dropdownMenuButton">
                                                         <h6 class="dropdown-header">Filter Activity:</h6>
@@ -588,90 +487,25 @@
                                                         <a class="dropdown-item" href="#!"><span class="badge bg-yellow-soft text-yellow my-1">Server</span></a>
                                                         <a class="dropdown-item" href="#!"><span class="badge bg-purple-soft text-purple my-1">Users</span></a>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="card-body">
                                                 <div class="timeline timeline-xs">
                                                     <!-- Timeline Item 1-->
+                                                    <% for(var i=0; i<events.length; i++) {%>
                                                     <div class="timeline-item">
                                                         <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">27 min</div>
+                                                            <div class="timeline-item-marker-text"><%= events[i].date%></div>
                                                             <div class="timeline-item-marker-indicator bg-green"></div>
                                                         </div>
                                                         <div class="timeline-item-content">
-                                                            New order placed!
-                                                            <a class="fw-bold text-dark" href="#!">Order #2912</a>
-                                                            has been successfully placed.
+                                                            <%= events[i].title%>
+                                                            <a class="fw-bold text-dark" href="#!"><%= events[i].note%>
                                                         </div>
                                                     </div>
+                                                    <% } %>
                                                     <!-- Timeline Item 2-->
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">58 min</div>
-                                                            <div class="timeline-item-marker-indicator bg-blue"></div>
-                                                        </div>
-                                                        <div class="timeline-item-content">
-                                                            Your
-                                                            <a class="fw-bold text-dark" href="#!">weekly report</a>
-                                                            has been generated and is ready to view.
-                                                        </div>
-                                                    </div>
-                                                    <!-- Timeline Item 3-->
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">2 hrs</div>
-                                                            <div class="timeline-item-marker-indicator bg-purple"></div>
-                                                        </div>
-                                                        <div class="timeline-item-content">
-                                                            New user
-                                                            <a class="fw-bold text-dark" href="#!">Valerie Luna</a>
-                                                            has registered
-                                                        </div>
-                                                    </div>
-                                                    <!-- Timeline Item 4-->
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">1 day</div>
-                                                            <div class="timeline-item-marker-indicator bg-yellow"></div>
-                                                        </div>
-                                                        <div class="timeline-item-content">Server activity monitor alert</div>
-                                                    </div>
-                                                    <!-- Timeline Item 5-->
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">1 day</div>
-                                                            <div class="timeline-item-marker-indicator bg-green"></div>
-                                                        </div>
-                                                        <div class="timeline-item-content">
-                                                            New order placed!
-                                                            <a class="fw-bold text-dark" href="#!">Order #2911</a>
-                                                            has been successfully placed.
-                                                        </div>
-                                                    </div>
-                                                    <!-- Timeline Item 6-->
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">1 day</div>
-                                                            <div class="timeline-item-marker-indicator bg-purple"></div>
-                                                        </div>
-                                                        <div class="timeline-item-content">
-                                                            Details for
-                                                            <a class="fw-bold text-dark" href="#!">Marketing and Planning Meeting</a>
-                                                            have been updated.
-                                                        </div>
-                                                    </div>
-                                                    <!-- Timeline Item 7-->
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text">2 days</div>
-                                                            <div class="timeline-item-marker-indicator bg-green"></div>
-                                                        </div>
-                                                        <div class="timeline-item-content">
-                                                            New order placed!
-                                                            <a class="fw-bold text-dark" href="#!">Order #2910</a>
-                                                            has been successfully placed.
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -680,7 +514,7 @@
                                         <!-- Pie chart with legend example-->
                                         <div class="card h-100">
                                             <div class="card-header">Something</div>
-                                            <div class="card-body">
+                                            <!-- <div class="card-body"> -->
                                                 <!-- <div class="chart-pie mb-4"><canvas id="myPieChart" width="100%" height="50"></canvas></div> -->
                                                 <div class="list-group list-group-flush">
                                                     <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
@@ -697,15 +531,15 @@
                                                         </div> -->
                                                         <!-- <div class="fw-500 text-dark">15%</div> -->
                                                     </div>
-                                                    <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
+                                                    <!-- <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2"> -->
                                                         <!-- <div class="me-3">
                                                             <i class="fas fa-circle fa-sm me-1 text-green"></i>
                                                             Referral
                                                         </div>
                                                         <div class="fw-500 text-dark">30%</div> -->
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    <!-- </div> -->
+                                                <!-- </div> -->
+                                            <!-- </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -825,6 +659,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -893,11 +728,5 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-pie-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables/datatables-simple-demo.js"></script>
-        <script src="server.js"></script>
     </body>
 </html>
