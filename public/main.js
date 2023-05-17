@@ -1,42 +1,21 @@
-var thumbDown = document.getElementsByClassName("fa-solid fa-link");
-var trash = document.getElementsByClassName("fa-solid fa-dumpster-fire");
-
-Array.from(thumbDown).forEach(function(element) {
-  element.addEventListener('click', function(){
-    const name = this.parentNode.parentNode.childNodes[1].innerText
-    const msg = this.parentNode.parentNode.childNodes[3].innerText
-    const thumbUp = this.parentNode.parentNode.childNodes[5].innerText
-    fetch('messages/thumbDown', {
-      method: 'put',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        'name': name,
-        'msg': msg,
-        'thumbUp':thumbUp
-      })
-    })
-    .then(response => {
-      if (response.ok) return response.json()
-    })
-    .then(data => {
-      console.log(data)
-      window.location.reload(true)
-    })
-  });
-});
+var trash = document.querySelectorAll(".trash");
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('messages', {
+        console.log("clicked")
+        const date = this.parentNode.childNodes[1].innerText
+        const title = this.parentNode.childNodes[3].innerText
+        const note = this.parentNode.childNodes[5].innerText
+        console.log(date,title,note)
+        fetch('/dashboard', {
           method: 'delete',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            'name': name,
-            'msg': msg
+            'date': date,
+            'title': title,
+            'note': note,
           })
         }).then(function (response) {
           window.location.reload()

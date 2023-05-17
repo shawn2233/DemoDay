@@ -85,7 +85,7 @@
 	 display: none;
 }
  header {
-	 position: fixed;
+	 position: relative;
 	 height: 80px;
 	 width: 100%;
 	 z-index: 50;

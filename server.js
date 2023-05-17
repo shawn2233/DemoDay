@@ -10,6 +10,10 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 
+
+const multer = require('multer');
+const upload = multer({ dest: 'public/img' });
+
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -19,11 +23,13 @@ var configDB = require('./config/database.js');
 
 var db
 
+// require("dotenv").config({ path: "./config/.env" });
+
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, db);
+  require('./app/routes.js')(app, passport, db, upload);
 }); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
@@ -48,6 +54,9 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+
+// const postRoutes = require("./routes/posts");
+// app.use("/post", postRoutes);
 
 // launch ======================================================================
 app.listen(port);

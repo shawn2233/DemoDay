@@ -9133,6 +9133,7 @@ textarea.form-control-lg {
 
 .d-flex {
   display: flex !important;
+  margin-right: 30px;
 }
 
 .d-inline-flex {

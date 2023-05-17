@@ -9,328 +9,14 @@
         <title>Dashboard - SB Admin Pro</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="styles2.css" rel="stylesheet" />
+        <link href="styledash.css" rel="stylesheet" />
         <link rel="shortcut icon" href="linkup.png">
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="nav-fixed">
-        <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-gray-500" id="sidenavAccordion">
-            <!-- Sidenav Toggle Button-->
-            <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
-            <!-- Navbar Brand-->
-            <!-- * * Tip * * You can use text or an image for your navbar brand.-->
-            <!-- * * * * * * When using an image, we recommend the SVG format.-->
-            <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-            <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="/dashboard">LinkUp</a>
-            <!-- Navbar Search Input-->
-            <!-- * * Note: * * Visible only on and above the lg breakpoint-->
-            <form class="form-inline me-auto d-none d-lg-block me-3">
-                <div class="input-group input-group-joined input-group-solid">
-                    <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
-                    <div class="input-group-text"><i data-feather="search"></i></div>
-                </div>
-            </form>
-            <!-- Navbar Items-->
-            <ul class="navbar-nav align-items-center ms-auto">
-                <!-- Documentation Dropdown-->
-               
-                <!-- Navbar Search Dropdown-->
-                <!-- * * Note: * * Visible only below the lg breakpoint-->
-                <li class="nav-item dropdown no-caret me-3 d-lg-none">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
-                    <!-- Dropdown - Search-->
-                    <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
-                        <form class="form-inline me-auto w-100">
-                            <div class="input-group input-group-joined input-group-solid">
-                                <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                                <div class="input-group-text"><i data-feather="search"></i></div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-                <!-- Alerts Dropdown-->
-                <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
-                    <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
-                        <h6 class="dropdown-header dropdown-notifications-header">
-                            <i class="me-2" data-feather="bell"></i>
-                            Alerts Center
-                        </h6>
-                        <!-- Example Alert 1-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 29, 2021</div>
-                                <div class="dropdown-notifications-item-content-text">This is an alert message. It's nothing serious, but it requires your attention.</div>
-                            </div>
-                        </a>
-                        <!-- Example Alert 2-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <div class="dropdown-notifications-item-icon bg-info"><i data-feather="bar-chart"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 22, 2021</div>
-                                <div class="dropdown-notifications-item-content-text">A new monthly report is ready. Click here to view!</div>
-                            </div>
-                        </a>
-                        <!-- Example Alert 3-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <div class="dropdown-notifications-item-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 8, 2021</div>
-                                <div class="dropdown-notifications-item-content-text">Critical system failure, systems shutting down.</div>
-                            </div>
-                        </a>
-                        <!-- Example Alert 4-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <div class="dropdown-notifications-item-icon bg-success"><i data-feather="user-plus"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 2, 2021</div>
-                                <div class="dropdown-notifications-item-content-text">New user request. Woody has requested access to the organization.</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
-                    </div>
-                </li>
-                <!-- Messages Dropdown-->
-                <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
-                    <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
-                        <h6 class="dropdown-header dropdown-notifications-header">
-                            <i class="me-2" data-feather="mail"></i>
-                            Message Center
-                        </h6>
-                        <!-- Example Message 1  -->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-2.png" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                <div class="dropdown-notifications-item-content-details">Thomas Wilcox · 58m</div>
-                            </div>
-                        </a>
-                        <!-- Example Message 2-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-3.png" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                <div class="dropdown-notifications-item-content-details">Emily Fowler · 2d</div>
-                            </div>
-                        </a>
-                        <!-- Example Message 3-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-4.png" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                <div class="dropdown-notifications-item-content-details">Marshall Rosencrantz · 3d</div>
-                            </div>
-                        </a>
-                        <!-- Example Message 4-->
-                        <a class="dropdown-item dropdown-notifications-item" href="#!">
-                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-5.png" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                <div class="dropdown-notifications-item-content-details">Colby Newton · 3d</div>
-                            </div>
-                        </a>
-                        <!-- Footer Link-->
-                        <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
-                    </div>
-                </li>
-                <!-- User Dropdown-->
-                <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="img/<%=user.propic%>" /></a>
-                    <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
-                        <h6 class="dropdown-header d-flex align-items-center">
-                            <img class="dropdown-user-img" src="img/<%=user.propic%>"/>
-                            <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name"><%=user.firstname %></div>
-                                <div class="dropdown-user-details-email"><%=user.local.email %></div>
-                            </div>
-                        </h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/account">
-                            <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                            Account
-                        </a>
-                        <a class="dropdown-item" href="/">
-                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                            Logout
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sidenav shadow-right sidenav-dark">
-                    <div class="sidenav-menu">
-                        <div class="nav accordion" id="accordionSidenav">
-                            <!-- Sidenav Menu Heading (Account)-->
-                            <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                            <div class="sidenav-menu-heading d-sm-none">Account</div>
-                            <!-- Sidenav Link (Alerts)-->
-                            <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                            <a class="nav-link d-sm-none" href="#!">
-                                <div class="nav-link-icon"><i data-feather="bell"></i></div>
-                                Alerts
-                                <span class="badge bg-warning-soft text-warning ms-auto">4 New!</span>
-                            </a>
-                            <!-- Sidenav Link (Messages)-->
-                            <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                            <a class="nav-link d-sm-none" href="#!">
-                                <div class="nav-link-icon"><i data-feather="mail"></i></div>
-                                Messages
-                                <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
-                            </a>
-                            <!-- Sidenav Menu Heading (Core)-->
-                            <div class="sidenav-menu-heading">Home</div>
-                            <!-- Sidenav Accordion (Dashboard)-->
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
-                                <div class="nav-link-icon"> <i class="fa-solid fa-house" style="color: #f0f2f4;"></i> </div>
-                                Home Page
-                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
-                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                    <!-- <a class="nav-link" href="dashboard-1.html">
-                                        Default
-                                        <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
-                                    </a> -->
-                                    <a class="nav-link" href="/dashboard">Home</a>
-                                    <!-- <a class="nav-link" href="dashboard-3.html">Affiliate</a> -->
-                                </nav>
-                            </div>
-                            <!-- Sidenav Heading (Custom)-->
-                            <div class="sidenav-menu-heading">Features</div>
-                            <!-- Sidenav Accordion (Pages)-->
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="nav-link-icon"><i data-feather="grid"></i></div>
-                                Pages
-                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" data-bs-parent="#accordionSidenav">
-                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
-                                    <!-- Nested Sidenav Accordion (Pages -> Account)-->
-                                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAccount" aria-expanded="false" aria-controls="pagesCollapseAccount">
-                                        Account
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAccount" data-bs-parent="#accordionSidenavPagesMenu">
-                                        <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/account">Profile</a>
-                                            <!-- <a class="nav-link" href="account-billing.html">Billing</a> -->
-                                            <a class="nav-link" href="/security">Security</a>
-                                            <a class="nav-link" href="/notifications">Notifications</a>
-                                        </nav>
-                                    </div>
-                                    <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
-                                    <!-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a> -->
-                                    <!-- <div class="collapse" id="pagesCollapseAuth" data-bs-parent="#accordionSidenavPagesMenu"> -->
-                                        <!-- <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesAuth"> -->
-                                            <!-- Nested Sidenav Accordion (Pages -> Authentication -> Basic)-->
-                                            <!-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthBasic" aria-expanded="false" aria-controls="pagesCollapseAuthBasic">
-                                                Basic
-                                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                            </a> -->
-                                            <!-- <div class="collapse" id="pagesCollapseAuthBasic" data-bs-parent="#accordionSidenavPagesAuth">
-                                                <nav class="sidenav-menu-nested nav">
-                                                    <a class="nav-link" href="/login">Login</a>
-                                                    <a class="nav-link" href="/signup">Register</a>
-                                                    <!-- <a class="nav-link" href="auth-password-basic.html">Forgot Password</a> -->
-                                                <!-- </nav> -->
-                                            <!-- </div> -->
-                                            <!-- Nested Sidenav Accordion (Pages -> Authentication -> Social)-->
-                                         
-                                        <!-- </nav> -->
-                                    <!-- </div> -->
-                                    <!-- Nested Sidenav Accordion (Pages -> Error)-->
-                                  
-                                </nav>
-                            </div>
-                            <!-- Sidenav Accordion (Applications)-->
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseApps" aria-expanded="false" aria-controls="collapseApps">
-                                <div class="nav-link-icon"><i class="fa-solid fa-globe" style="color: #eff1f5;"></i></div>
-                                Social
-                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseApps" data-bs-parent="#accordionSidenav">
-                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
-                                    <!-- Nested Sidenav Accordion (Apps -> Knowledge Base)-->
-                                 
-                                    <!-- Nested Sidenav Accordion (Apps -> User Management)-->
-                                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#appsCollapseUserManagement" aria-expanded="false" aria-controls="appsCollapseUserManagement">
-                                        User Management
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="appsCollapseUserManagement" data-bs-parent="#accordionSidenavAppsMenu">
-                                        <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/friends">Friend List</a>
-                                        <!-- <a class="nav-link" href="user-management-edit-user.html">Edit User</a> -->
-                                        <a class="nav-link" href="/add">Add Friend</a>
-                                        <a class="nav-link" href="/list">Party List</a>
-                                            <!-- <a class="nav-link" href="user-management-org-details.html">Organization Details</a> -->
-                                        </nav>
-                                    </div>
-                                    <!-- Nested Sidenav Accordion (Apps -> Posts Management)-->
-                                    <!-- <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#appsCollapsePostsManagement" aria-expanded="false" aria-controls="appsCollapsePostsManagement">
-                                        Posts Management
-                                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="appsCollapsePostsManagement" data-bs-parent="#accordionSidenavAppsMenu">
-                                        <nav class="sidenav-menu-nested nav">
-                                            <a class="nav-link" href="blog-management-posts-list.html">Posts List</a>
-                                            <a class="nav-link" href="blog-management-create-post.html">Create Post</a>
-                                            <a class="nav-link" href="blog-management-edit-post.html">Edit Post</a>
-                                            <a class="nav-link" href="blog-management-posts-admin.html">Posts Admin</a>
-                                        </nav> 
-                                    </div> -->
-                                </nav>
-                            </div>
-                            <!-- Sidenav Accordion (Flows)-->
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
-                                <div class="nav-link-icon"><i class="fa-solid fa-people-group" style="color: #f3f4f7;"></i></div>
-                                Party Management
-                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseFlows" data-bs-parent="#accordionSidenav">
-                                <nav class="sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/select">Registration</a>
-                                    <!-- <a class="nav-link" href="wizard.html">Wizard</a> -->
-                                </nav>
-                            </div>
-                            <!-- Sidenav Heading (UI Toolkit)-->
-                          
-                            <!-- Sidenav Heading (Addons)-->
-                            <!-- <div class="sidenav-menu-heading">Plugins</div> -->
-                            <!-- Sidenav Link (Charts)-->
-                            <a class="nav-link" href="/watch">
-                                <div class="nav-link-icon"><i class="fa-solid fa-tv" style="color: #f1f2f3;"></i></div>
-                                Watch Page
-                            </a>
-                            <!-- Sidenav Link (Tables)-->
-                            <a class="nav-link" href="/cal">
-                                <div class="nav-link-icon"><i class="fa-solid fa-calendar" style="color: #f9fafa;"></i></div>
-                                Calendar
-                            </a>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <!-- Sidenav Footer-->
-                    <div class="sidenav-footer">
-                        <div class="sidenav-footer-content">
-                            <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title"><%=user.firstname%></div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+        <%- include('partials/nav') -%>
             <div id="layoutSidenav_content">
                 <main>
                     <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -353,80 +39,70 @@
                         <div class="row">
                             <div class="col-xl-4 mb-4">
                                 <!-- Dashboard example card 1-->
-                                <a class="card lift h-100" href="#!">
-                                    <div class="card-body d-flex justify-content-center flex-column">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div class="me-3">
+                                <!-- <a class="card lift h-100" href="#!"> -->
+                                    <!-- <div class="card-body d-flex justify-content-center flex-column"> -->
+                                        <!-- <div class="d-flex align-items-center justify-content-between"> -->
+                                            <!-- <div class="me-3"> -->
                                                 <!-- <i class="feather-xl text-primary mb-3" data-feather="package"></i> -->
-                                                <i class="fa-solid fa-clock fa-beat fa-xl" style="color: #0b5fef;"></i>                                             
-                                                <h5>Watch Countdown</h5>
+                                                <!-- <i class="fa-solid fa-clock fa-beat fa-xl" style="color: #0b5fef;"></i>                                              -->
+                                                <!-- <h5>Watch Countdown</h5> -->
                                                 <!-- <div class="text-muted small">To create informative visual elements on your pages</div> -->
-                                            </div>
+                                            <!-- </div> -->
                                             <!-- <img src="assets/img/illustrations/browser-stats.svg" alt="..." style="width: 8rem" /> -->
-                                        </div>
-                                    </div>
-                                </a>
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                                <!-- </a> -->
                             </div>
-                            <div class="col-xl-4 mb-4">
+                            <!-- <div class="col-xl-4 mb-4"> -->
                                 <!-- Dashboard example card 2-->
-                                <a class="card lift h-100" href="#!">
+                                <!-- <a class="card lift h-100" href="#!">
                                     <div class="card-body d-flex justify-content-center flex-column">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="me-3">
                                                 <i class="fa-regular fa-calendar fa-beat fa-2xl" style="color: #2a6f2b;"></i>
                                                 <h5>Calendar Widget</h5>
-                                                <ul class="events">
-                                                    <% for(var i=0; i<events.length; i++) {%>
-                                                      <li class="event">
-                                                        <span><%= events[i].title%></span>
-                                                        <span><%= events[i].date%></span>
-                                                        <span><%= events[i].note%></span>
-                                                        <span data-eventid="<%= events[i]._id %>" class="trash"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                                      </li>
-                                                    <% } %>
-                                                    </ul>
-                                                <!-- <div class="text-muted small">To keep you on track when working with our toolkit</div> -->
+                                                <div class="text-muted small">To keep you on track when working with our toolkit</div>
                                             </div>
-                                            <!-- <img src="assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" /> -->
+                                            <img src="assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" />
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
                             <div class="col-xl-4 mb-4">
                                 <!-- Dashboard example card 3-->
-                                <a class="card lift h-100" href="#!">
-                                    <div class="card-body d-flex justify-content-center flex-column">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div class="me-3">
+                                <!-- <a class="card lift h-100" href="#!"> -->
+                                    <!-- <div class="card-body d-flex justify-content-center flex-column"> -->
+                                        <!-- <div class="d-flex align-items-center justify-content-between"> -->
+                                            <!-- <div class="me-3"> -->
                                                 <!-- <i class="feather-xl text-green mb-3" data-feather="layout"></i> -->
-                                                <h5>Something</h5>
+                                                <!-- <h5>Something</h5> -->
                                                 <!-- <div class="text-muted small">To help get you started when building your new UI</div> -->
-                                            </div>
+                                            <!-- </div> -->
                                             <!-- <img src="assets/img/illustrations/windows.svg" alt="..." style="width: 8rem" /> -->
-                                        </div>
-                                    </div>
-                                </a>
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                                <!-- </a> -->
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xxl-8">
                                 <!-- Tabbed dashboard card example-->
-                                <div class="card mb-4">
-                                    <div class="card-header border-bottom">
+                                <!-- <div class="card mb-4"> -->
+                                    <!-- <div class="card-header border-bottom"> -->
                                         <!-- Dashboard card navigation-->
-                                        <ul class="nav nav-tabs card-header-tabs" id="dashboardNav" role="tablist">
-                                            <li class="nav-item me-1"><a class="nav-link active" href="/newsfeed"  aria-controls="overview" aria-selected="true">Newsfeed</a></li>
-                                            <li class="nav-item"><a class="nav-link" id="activities-pill" href="/newsfeed" data-bs-toggle="tab" role="tab" aria-controls="activities" aria-selected="false">Activities</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="tab-content" id="dashboardNavContent">
+                                        <!-- <ul class="nav nav-tabs card-header-tabs" id="dashboardNav" role="tablist"> -->
+                                            <!-- <li class="nav-item me-1"><a class="nav-link active" href="/newsfeed"  aria-controls="overview" aria-selected="true">Newsfeed</a></li> -->
+                                            <!-- <li class="nav-item"><a class="nav-link" id="activities-pill" href="/newsfeed" data-bs-toggle="tab" role="tab" aria-controls="activities" aria-selected="false">Activities</a></li> -->
+                                        <!-- </ul> -->
+                                    <!-- </div> -->
+                                    <!-- <div class="card-body"> -->
+                                        <!-- <div class="tab-content" id="dashboardNavContent"> -->
                                             <!-- Dashboard Tab Pane 1-->
-                                            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-pill">
+                                            <!-- <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-pill"> -->
                                                 <!-- <div class="chart-area mb-4 mb-lg-0" style="height: 20rem"><canvas id="myAreaChart" width="100%" height="30"></canvas></div> -->
-                                            </div>
+                                            <!-- </div> -->
                                             <!-- Dashboard Tab Pane 2-->
-                                            <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-pill">
+                                            <!-- <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-pill">
                                                 <table id="datatablesSimple">
                                                     <thead>
                                                         <tr>
@@ -455,24 +131,78 @@
                                                         <% } %>
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                        </div>
+                                            </div> -->
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                                <div class="col-xl-6 mb-4">
+                                    <!-- Pie chart with legend example-->
+                                    <div class="card h-100">
+                                        <div class="card-header">Calendar Events</div>
+                                        <ul class="events">
+                                            <% for(var i=0; i<events.length; i++) {%>
+                                              <li class="event">
+                                                <span><%= events[i].date%></span>
+                                                <span><%= events[i].title%></span>
+                                                <span><%= events[i].note%></span>
+                                                <span data-eventid="<%= events[i]._id %>" class="trash">❌</span>
+                                              </li>
+                                            <% } %>
+                                            </ul>
+                                        <!-- <div class="card-body"> -->
+                    
+                                            <!-- <div class="chart-pie mb-4"><canvas id="myPieChart" width="100%" height="50"></canvas></div> -->
+                                            <!-- <div class="list-group list-group-flush"> -->
+                                                <!-- <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2"> -->
+                                                    <!-- <div class="me-3">
+                                                        <i class="fas fa-circle fa-sm me-1 text-blue"></i>
+                                                        Direct
+                                                    </div> -->
+                                                    <!-- <div class="fw-500 text-dark">55%</div> -->
+                                                <!-- </div> -->
+                                                <!-- <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2"> -->
+                                                    <!-- <div class="me-3">
+                                                        <i class="fas fa-circle fa-sm me-1 text-purple"></i>
+                                                        Social
+                                                    </div> -->
+                                                    <!-- <div class="fw-500 text-dark">15%</div> -->
+                                                <!-- </div> -->
+                                                <!-- <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2"> -->
+                                                    <!-- <div class="me-3">
+                                                        <i class="fas fa-circle fa-sm me-1 text-green"></i>
+                                                        Referral
+                                                    </div>
+                                                    <div class="fw-500 text-dark">30%</div> -->
+                                                <!-- </div> -->
+                                            <!-- </div> -->
+                                        <!-- </div> -->
                                     </div>
                                 </div>
                                 <!-- Illustration dashboard card example-->
                                 <div class="card mb-4">
                                     <div class="card-body py-5">
                                         <div class="d-flex flex-column justify-content-center">
-                                            <img class="img-fluid mb-4" src="assets/img/illustrations/data-report.svg" alt="" style="height: 10rem" />
+                                            <!-- <img class="img-fluid mb-4" src="assets/img/illustrations/data-report.svg" alt="" style="height: 10rem" /> -->
                                             <div class="text-center px-0 px-lg-5">
-                                                <h5>Something</h5>
+                                                <h5>Newsfeed</h5>
+                                                <h2>Most recent msg: <%= lastDoc.msg %> </h2>
+                                                <ul class="messages">
+                                                    <% for(var i=0; i<3; i++) {%>
+                                                      <li class="message">
+                                                        <span><%= messages[i].name %> -Posted: </span>
+                                                        <span><%= messages[i].msg %></span>
+                                                      </li>
+                                                    <% } %>
+                                                    </ul>
                                                 <!-- <p class="mb-4">Our new report generation system is now online. You can start creating custom reporting for any documents available on your account.</p> -->
-                                                <a class="btn btn-primary p-3" href="#!">Get Started</a>
+                                                <a class="btn btn-primary p-3" href="/newsfeed">View more</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+
+
                                     <div class="col-xl-6 mb-4">
                                         <!-- Dashboard activity timeline example-->
                                         <div class="card card-header-actions h-100">
@@ -492,56 +222,79 @@
                                             <div class="card-body">
                                                 <div class="timeline timeline-xs">
                                                     <!-- Timeline Item 1-->
-                                                    <% for(var i=0; i<events.length; i++) {%>
                                                     <div class="timeline-item">
                                                         <div class="timeline-item-marker">
-                                                            <div class="timeline-item-marker-text"><%= events[i].date%></div>
+                                                            <div class="timeline-item-marker-text">27 min</div>
                                                             <div class="timeline-item-marker-indicator bg-green"></div>
                                                         </div>
                                                         <div class="timeline-item-content">
-                                                            <%= events[i].title%>
-                                                            <a class="fw-bold text-dark" href="#!"><%= events[i].note%>
+                                                            You added a new friend
                                                         </div>
                                                     </div>
-                                                    <% } %>
                                                     <!-- Timeline Item 2-->
-                                                    
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-item-marker">
+                                                            <div class="timeline-item-marker-text">58 min</div>
+                                                            <div class="timeline-item-marker-indicator bg-blue"></div>
+                                                        </div>
+                                                        <div class="timeline-item-content">
+                                                            You created a new calendar event
+                                                        </div>
+                                                    </div>
+                                                    <!-- Timeline Item 3-->
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-item-marker">
+                                                            <div class="timeline-item-marker-text">2 hrs</div>
+                                                            <div class="timeline-item-marker-indicator bg-purple"></div>
+                                                        </div>
+                                                        <div class="timeline-item-content">
+                                                            You added a new friend
+                                                        </div>
+                                                    </div>
+                                                    <!-- Timeline Item 4-->
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-item-marker">
+                                                            <div class="timeline-item-marker-text">1 day</div>
+                                                            <div class="timeline-item-marker-indicator bg-yellow"></div>
+                                                        </div>
+                                                        <div class="timeline-item-content">You added a new friend</div>
+                                                    </div>
+                                                    <!-- Timeline Item 5-->
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-item-marker">
+                                                            <div class="timeline-item-marker-text">1 day</div>
+                                                            <div class="timeline-item-marker-indicator bg-green"></div>
+                                                        </div>
+                                                        <div class="timeline-item-content">
+                                                           You created a new calendar event
+                                                        </div>
+                                                    </div>
+                                                    <!-- Timeline Item 6-->
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-item-marker">
+                                                            <div class="timeline-item-marker-text">1 day</div>
+                                                            <div class="timeline-item-marker-indicator bg-purple"></div>
+                                                        </div>
+                                                        <div class="timeline-item-content">
+                                                            You added a new friend
+                                                        </div>
+                                                    </div>
+                                                    <!-- Timeline Item 7-->
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-item-marker">
+                                                            <div class="timeline-item-marker-text">2 days</div>
+                                                            <div class="timeline-item-marker-indicator bg-green"></div>
+                                                        </div>
+                                                        <div class="timeline-item-content">
+                                                           Bob reposted your post
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 mb-4">
-                                        <!-- Pie chart with legend example-->
-                                        <div class="card h-100">
-                                            <div class="card-header">Something</div>
-                                            <!-- <div class="card-body"> -->
-                                                <!-- <div class="chart-pie mb-4"><canvas id="myPieChart" width="100%" height="50"></canvas></div> -->
-                                                <div class="list-group list-group-flush">
-                                                    <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-                                                        <!-- <div class="me-3">
-                                                            <i class="fas fa-circle fa-sm me-1 text-blue"></i>
-                                                            Direct
-                                                        </div> -->
-                                                        <!-- <div class="fw-500 text-dark">55%</div> -->
-                                                    </div>
-                                                    <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-                                                        <!-- <div class="me-3">
-                                                            <i class="fas fa-circle fa-sm me-1 text-purple"></i>
-                                                            Social
-                                                        </div> -->
-                                                        <!-- <div class="fw-500 text-dark">15%</div> -->
-                                                    </div>
-                                                    <!-- <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2"> -->
-                                                        <!-- <div class="me-3">
-                                                            <i class="fas fa-circle fa-sm me-1 text-green"></i>
-                                                            Referral
-                                                        </div>
-                                                        <div class="fw-500 text-dark">30%</div> -->
-                                                    <!-- </div> -->
-                                                <!-- </div> -->
-                                            <!-- </div> -->
-                                        </div>
-                                    </div>
+
+                                   
                                 </div>
                             </div>
                             <div class="col-xxl-4">
@@ -557,7 +310,7 @@
                                                         <div class="avatar avatar-xl me-3 bg-gray-200"><img class="avatar-img img-fluid" src="assets/img/illustrations/profiles/profile-1.png" alt="" /></div>
                                                         <div class="d-flex flex-column fw-bold">
                                                             <a class="text-dark line-height-normal mb-1" href="#!">Sid Rooney</a>
-                                                            <!-- <div class="small text-muted line-height-normal">Position</div> -->
+                                                            <!-- <div class="small text-muted line-height-normal">Most Recent</div> -->
                                                         </div>
                                                     </div>
                                                     <div class="dropdown no-caret">
@@ -673,25 +426,25 @@
                                             <div class="card-body">
                                                 <!-- Progress item 1-->
                                                 <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Spy Family</div>
+                                                    <div class="fw-bold">CSS</div>
                                                     <div class="small">25%</div>
                                                 </div>
                                                 <div class="progress mb-3"><div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div>
                                                 <!-- Progress item 2-->
                                                 <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">BlueLock</div>
+                                                    <div class="fw-bold">HTML</div>
                                                     <div class="small">50%</div>
                                                 </div>
                                                 <div class="progress mb-3"><div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
                                                 <!-- Progress item 3-->
                                                 <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Jujutsu Kaisen</div>
+                                                    <div class="fw-bold">JavaScript</div>
                                                     <div class="small">75%</div>
                                                 </div>
                                                 <div class="progress mb-3"><div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
                                                 <!-- Progress item 4-->
                                                 <div class="d-flex align-items-center justify-content-between small mb-1">
-                                                    <div class="fw-bold">Demon Slayer</div>
+                                                    <div class="fw-bold">Every</div>
                                                     <div class="small">100%</div>
                                                 </div>
                                                 <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div></div>
@@ -703,9 +456,9 @@
                                 <div class="card">
                                     <div class="card-body text-center p-5">
                                         <img class="img-fluid mb-4" src="assets/img/illustrations/team-spirit.svg" alt="" style="max-width: 16.25rem" />
-                                        <h5>Watch Group</h5>
-                                        <p class="mb-4">Create your next watch party.</p>
-                                        <a class="btn btn-primary p-3" href="#!">Create</a>
+                                        <h5>LinkUp Group</h5>
+                                        <p class="mb-4">Create your next meeting.</p>
+                                        <a class="btn btn-primary p-3" href="https://linkupvideo.netlify.app/" target="_blank">Create</a>
                                     </div>
                                 </div>
                             </div>
@@ -728,5 +481,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="scripts.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>

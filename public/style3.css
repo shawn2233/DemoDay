@@ -10,3 +10,6 @@ div.well{
 .col-sm-6 {
   width: 81%;
 }
+li{
+  list-style: none;
+}

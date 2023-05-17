@@ -1,26 +1,52 @@
-module.exports = function (app, passport, db) {
+module.exports = function (app, passport, db, upload) {
 const ObjectID = require("mongodb").ObjectID
+
 
   // normal routes ===============================================================
 
   // show the home page (will also have our login links)
+  // app.get('/', function (req, res) {
+  //   res.render('index.ejs');
+  // });
   app.get('/', function (req, res) {
-    res.render('index.ejs');
+    res.render('stellar.ejs');
   });
 
   // APP SECTIONS =========================
 
   //homepage
   app.get('/dashboard', function (req, res) {
-    db.collection('calendar').find({userId:req.user._id}).sort({date: -1}).toArray((err, result) => {
+    db.collection('calendar').find({userId:req.user._id}).sort({date: +1}).toArray((err, events) => {
       if (err) return console.log(err)
       console.log(req.user)
-      res.render('dashb.ejs', {
-        user: req.user,
-        events: result
-      })
-    })
+  
+      db.collection('messages').find().toArray((err, messages) => {
+        if (err) return console.log(err)
+  
+        let myMessages = messages.filter(doc => doc.name === req.user.local.email)
+  
+        let data = {
+          user: req.user,
+          events: events,
+          messages: messages,
+          myMessages: myMessages,
+          lastDoc: messages[messages.length - 1]
+        };
+  
+        res.render('dashb.ejs', data);
+      });
+    });
   });
+
+
+
+  app.delete('/dashboard', (req, res) => {
+    console.log("delete",req.body)
+    db.collection('calendar').findOneAndDelete({date: req.body.date, title: req.body.title, note: req.body.note}, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Message deleted!')
+    })
+  })
 
   //newsfeed
   app.get('/newsfeed', isLoggedIn, function (req, res) {
@@ -46,6 +72,42 @@ const ObjectID = require("mongodb").ObjectID
       res.render('account-profile.ejs', {
         user: req.user
       })
+    })
+  });
+
+  app.post('/account', (req, res) => {
+    console.log("updating DB", req.body.userid);
+    req.user.username = req.body.username
+    req.user.firstname = req.body.firstname
+    req.user.lastname = req.body.lastname
+    req.user.phone = req.body.phone
+    req.user.birthday = req.body.birthday
+    req.user.save().then(()=>{
+      res.render('account-profile.ejs', {
+                user: req.user
+              })
+    })
+  });
+  // app.post('/accountpp', (req, res) => {
+  //   console.log("updating DB", req.body.userid);
+  //   db.collection('users').findOneAndUpdate(
+  //     { _id: req.user._id },
+  //     { $set: { userId: req.user._id, propic: req.body.propic } },
+  //     (err, result) => {
+  //       if (err) return res.send(err);
+  //       res.render('account-profile.ejs', {
+  //         user: req.user
+  //       });
+  //     }
+  //   );
+  // });
+  app.post("/accountpp", upload.single("imageUpload"), (req, res) => {
+    console.log("updating DB", req.file);
+    req.user.propic = req.file.filename
+    req.user.save().then(()=>{
+      res.render('account-profile.ejs', {
+                user: req.user
+              })
     })
   });
 
@@ -85,7 +147,7 @@ const ObjectID = require("mongodb").ObjectID
     db.collection('calendar').find({userId:req.user._id}).sort({date: -1}).toArray((err, result) => {
       if (err) return console.log(err)
       console.log(req.user)
-      res.render('cal.ejs', {
+      res.render('cal2.ejs', {
         user: req.user,
         events: result
       })

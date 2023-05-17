@@ -3,26 +3,60 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>LinkUp</title>
+    <title>LinkUp-videolobby</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="shortcut icon" href="./images/luLogo.png">
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/lobby.css'>
 </head>
 <body>
 
-    <button id="join-btn">Join Party</button>
+        <header id="nav">
+       <div class="nav--list">
+            <a href="index.html"/>
+                <h3 id="logo">
+                    <img src="./images/luLogo.png" alt="Site Logo">
+                    <span>LinkUp</span>
+                </h3>
+            </a>
+       </div>
 
-    <div id="stream-wrapper">
-        <div id="video-streams"></div>
-
-        <div id="stream-controls">
-            <button id="leave-btn">Leave Party</button>
-            <button id="mic-btn">Mic On</button>
-            <button id="camera-btn">Camera on</button>
+        <div id="nav__links">
+            <a class="nav__link" id="create__room__btn" href="index.html">
+                Create Room
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ede0e0" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
+            </a>
         </div>
-    </div>
+    </header>
+
+    <main id="room__lobby__container">
+        <div id="form__container">
+             <div id="form__container__header">
+                 <p>👋🏾 Create or Join Room</p>
+             </div>
+ 
+ 
+            <form id="lobby__form">
+ 
+                 <div class="form__field__wrapper">
+                     <label>Your Name</label>
+                     <input type="text" name="name" required placeholder="Enter your display name..." />
+                 </div>
+ 
+                 <div class="form__field__wrapper">
+                     <label>Room Name</label>
+                     <input type="text" name="room" required placeholder="Enter room name..." />
+                 </div>
+ 
+                 <div class="form__field__wrapper">
+                     <button type="submit">Go to Room 
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
+                    </button>
+                 </div>
+            </form>
+        </div>
+     </main>
     
 </body>
-<!-- <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script> -->
-<script src="AgoraRTC_N-4.7.3.js"></script>
-<script src='main.js'></script>
+<script type="text/javascript" src="js/lobby.js"></script>
 </html>
