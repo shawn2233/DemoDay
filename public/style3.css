@@ -13,3 +13,6 @@ div.well{
 li{
   list-style: none;
 }
+.hidden{
+  display: none;
+}

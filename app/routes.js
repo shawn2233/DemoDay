@@ -50,10 +50,10 @@ const ObjectID = require("mongodb").ObjectID
 
   //newsfeed
   app.get('/newsfeed', isLoggedIn, function (req, res) {
-    db.collection('messages').find().toArray((err, result) => {
+    db.collection('messages').find().sort({createdAt: -1}).toArray((err, result) => {
       if (err) return console.log(err)
 
-      let myMessages = result.filter(doc => doc.name === req.user.local.email)
+      let myMessages = result.filter(doc => doc.name === req.user.username)
 
       res.render('newsfeed.ejs', {
         user: req.user,
@@ -264,7 +264,7 @@ const ObjectID = require("mongodb").ObjectID
 
 
   app.post('/addMessages', (req, res) => {
-    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, thumbUp: "" }, (err, result) => {
+    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, thumbUp: "", createdAt:new Date() }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
       res.redirect('/newsfeed')

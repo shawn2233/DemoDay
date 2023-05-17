@@ -185,12 +185,13 @@
                                             <!-- <img class="img-fluid mb-4" src="assets/img/illustrations/data-report.svg" alt="" style="height: 10rem" /> -->
                                             <div class="text-center px-0 px-lg-5">
                                                 <h5>Newsfeed</h5>
-                                                <h2>Most recent msg: <%= lastDoc.msg %> </h2>
+                                                <h2>Latest: <%=lastDoc.msg%> <%=lastDoc.createdAt.toLocaleString()%></h2>
                                                 <ul class="messages">
                                                     <% for(var i=0; i<3; i++) {%>
                                                       <li class="message">
                                                         <span><%= messages[i].name %> -Posted: </span>
                                                         <span><%= messages[i].msg %></span>
+                                                        <span><%= messages[i].createdAt.toLocaleString()%></span>
                                                       </li>
                                                     <% } %>
                                                     </ul>
