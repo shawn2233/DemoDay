@@ -88,9 +88,9 @@
                                             <% for(let i=0; i<userSearchResults.length; i++){
                                                 console.log(userSearchResults[i]._id.toString(),user.friends) %>
                                                 <li><span data-userid="<%=userSearchResults[i]._id%>" class="addFriend">
-                                                        <%=userSearchResults[i].firstname%>
+                                                        <%=userSearchResults[i].firstname%> <%=userSearchResults[i].lastname%>
                                                     </span><i
-                                                        class="<%=user.friends.find(friendid => friendid.toString()=== userSearchResults[i]._id.toString())? 'fa-solid' : 'fa-regular'%> fa-heart"></i>
+                                                        class="<%=user.friends.find(friendid => friendid.toString() === userSearchResults[i]._id.toString())? 'fa-solid' : 'fa-regular'%> fa-address-book"></i>
                                                 </li>
                                                 <%}%>
                                                     <%}else{%>

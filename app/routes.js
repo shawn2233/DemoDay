@@ -1,5 +1,5 @@
-module.exports = function (app, passport, db, upload) {
-const ObjectID = require("mongodb").ObjectID
+module.exports = function (app, passport, db, upload, client) {
+  const ObjectID = require("mongodb").ObjectID
 
 
   // normal routes ===============================================================
@@ -16,15 +16,15 @@ const ObjectID = require("mongodb").ObjectID
 
   //homepage
   app.get('/dashboard', function (req, res) {
-    db.collection('calendar').find({userId:req.user._id}).sort({date: +1}).toArray((err, events) => {
+    db.collection('calendar').find({ userId: req.user._id }).sort({ date: +1 }).toArray((err, events) => {
       if (err) return console.log(err)
       console.log(req.user)
-  
+
       db.collection('messages').find().toArray((err, messages) => {
         if (err) return console.log(err)
-  
+
         let myMessages = messages.filter(doc => doc.name === req.user.local.email)
-  
+
         let data = {
           user: req.user,
           events: events,
@@ -32,7 +32,7 @@ const ObjectID = require("mongodb").ObjectID
           myMessages: myMessages,
           lastDoc: messages[messages.length - 1]
         };
-  
+
         res.render('dashb.ejs', data);
       });
     });
@@ -41,8 +41,8 @@ const ObjectID = require("mongodb").ObjectID
 
 
   app.delete('/dashboard', (req, res) => {
-    console.log("delete",req.body)
-    db.collection('calendar').findOneAndDelete({date: req.body.date, title: req.body.title, note: req.body.note}, (err, result) => {
+    console.log("delete", req.body)
+    db.collection('calendar').findOneAndDelete({ date: req.body.date, title: req.body.title, note: req.body.note }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')
     })
@@ -50,7 +50,7 @@ const ObjectID = require("mongodb").ObjectID
 
   //newsfeed
   app.get('/newsfeed', isLoggedIn, function (req, res) {
-    db.collection('messages').find().sort({createdAt: -1}).toArray((err, result) => {
+    db.collection('messages').find().sort({ createdAt: -1 }).toArray((err, result) => {
       if (err) return console.log(err)
 
       let myMessages = result.filter(doc => doc.name === req.user.username)
@@ -77,15 +77,20 @@ const ObjectID = require("mongodb").ObjectID
 
   app.post('/account', (req, res) => {
     console.log("updating DB", req.body.userid);
+    client.messages.create({
+      body: 'Hello, you are now connected to LinkUp ! Enjoy !',
+      from: '+18775409350',
+      to: req.body.phone
+    }).then(message => console.log(message.sid));
     req.user.username = req.body.username
     req.user.firstname = req.body.firstname
     req.user.lastname = req.body.lastname
     req.user.phone = req.body.phone
     req.user.birthday = req.body.birthday
-    req.user.save().then(()=>{
+    req.user.save().then(() => {
       res.render('account-profile.ejs', {
-                user: req.user
-              })
+        user: req.user
+      })
     })
   });
   // app.post('/accountpp', (req, res) => {
@@ -104,10 +109,10 @@ const ObjectID = require("mongodb").ObjectID
   app.post("/accountpp", upload.single("imageUpload"), (req, res) => {
     console.log("updating DB", req.file);
     req.user.propic = req.file.filename
-    req.user.save().then(()=>{
+    req.user.save().then(() => {
       res.render('account-profile.ejs', {
-                user: req.user
-              })
+        user: req.user
+      })
     })
   });
 
@@ -144,7 +149,7 @@ const ObjectID = require("mongodb").ObjectID
 
   //calendar routes
   app.get('/cal', function (req, res) {
-    db.collection('calendar').find({userId:req.user._id}).sort({date: -1}).toArray((err, result) => {
+    db.collection('calendar').find({ userId: req.user._id }).sort({ date: -1 }).toArray((err, result) => {
       if (err) return console.log(err)
       console.log(req.user)
       res.render('cal2.ejs', {
@@ -155,7 +160,7 @@ const ObjectID = require("mongodb").ObjectID
   });
 
   app.post('/cal', (req, res) => {
-    db.collection('calendar').save({ userId:req.user._id ,title: req.body.title, date: req.body.date, note: req.body.note, tag: req.body.tag }, (err, result) => {
+    db.collection('calendar').save({ userId: req.user._id, title: req.body.title, date: req.body.date, note: req.body.note, tag: req.body.tag }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
       res.redirect('/cal')
@@ -204,25 +209,25 @@ const ObjectID = require("mongodb").ObjectID
         console.log(req.user)
         res.render('userAdd.ejs', {
           user: req.user,
-          userSearchResults : result
+          userSearchResults: result
         })
       })
-    }else{
+    } else {
       res.render('userAdd.ejs', {
         user: req.user,
-        userSearchResults : []
+        userSearchResults: []
       })
     }
   });
   app.put('/add', (req, res) => {
-    console.log("put add",req.body.userid)
+    console.log("put add", req.body.userid)
     db.collection('users')
-      .findOneAndUpdate({_id : req.user._id},
-        { $addToSet: { friends: ObjectID(req.body.userid)} },
-      (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
+      .findOneAndUpdate({ _id: req.user._id },
+        { $addToSet: { friends: ObjectID(req.body.userid) } },
+        (err, result) => {
+          if (err) return res.send(err)
+          res.send(result)
+        })
   })
 
 
@@ -262,9 +267,8 @@ const ObjectID = require("mongodb").ObjectID
 
   // newsfeed routes ===============================================================
 
-
   app.post('/addMessages', (req, res) => {
-    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, thumbUp: "", createdAt:new Date() }, (err, result) => {
+    db.collection('messages').save({ name: req.body.name, msg: req.body.msg, thumbUp: "", createdAt: new Date() }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
       res.redirect('/newsfeed')
@@ -292,6 +296,9 @@ const ObjectID = require("mongodb").ObjectID
       res.send('Message deleted!')
     })
   })
+
+
+
 
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================
@@ -327,7 +334,15 @@ const ObjectID = require("mongodb").ObjectID
   // =============================================================================
   // UNLINK ACCOUNTS =============================================================
   // =============================================================================
-
+  // local -----------------------------------
+  app.get('/unlink/local', isLoggedIn, function (req, res) {
+    var user = req.user;
+    user.local.email = undefined;
+    user.local.password = undefined;
+    user.save(function (err) {
+      res.redirect('/signup');
+    });
+  });
 
 };
 
