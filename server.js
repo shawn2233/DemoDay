@@ -27,7 +27,7 @@ var db
 
 
 const accountSid = "AC7deb0af7001862e523ea56aa1f177f5a"
-const authToken = "859639422e98f511e324f2b1de3ba014";
+const authToken = "1cfbb1ca2ec6b37636207ba7e2bf8255";
 const client = require('twilio')(accountSid, authToken);
 
 // client.messages

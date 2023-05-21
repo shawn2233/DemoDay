@@ -1,18 +1,118 @@
-body{
-    padding-top:80px;
-    word-wrap:break-word;
-    background-color: rgba(20	40	72	);
-    color: white;
-  }
-div.well{
-    background-color: black;
-}
-.col-sm-6 {
-  width: 81%;
-}
-li{
-  list-style: none;
-}
-.hidden{
+.hidden {
   display: none;
+}
+
+body {
+  background-color: rgba(20 40 72);
+  /* background-image: url("https://media.giphy.com/media/MQuimvP6FGaNW/giphy.gif"); */
+  background-size: cover;
+  background-position: center;
+  animation: bgAnimation 20s infinite;
+}
+
+@keyframes bgAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container {
+  background-color: rgba(20 40 72);
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li {
+  list-style: none;
+  color: black;
+}
+
+.page-header {
+  margin-top: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.col-sm-6 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.messages {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.message {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message span {
+  margin-right: 10px;
+}
+
+.message span:last-child {
+  margin-right: 0;
+}
+
+.message i {
+  color: black;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #337ab7;
+  color: #fff;
 }
