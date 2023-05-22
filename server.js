@@ -31,11 +31,7 @@ const client = require('twilio')(process.env.accountSid, process.env.authToken);
 
 
 // configuration ===============================================================
-mongoose.connect(configDB.url, (err, database) => {
-  if (err) return console.log(err)
-  db = database
-  require('./app/routes.js')(app, passport, db, upload, client);
-}); // connect to our database
+
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -61,6 +57,11 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // launch ======================================================================
-app.listen(port);
-console.log('LinkUp is on port ' + port);
 
+mongoose.connect(configDB.url, (err, database) => {
+  if (err) return console.log(err)
+  db = database
+  app.listen(port);
+  console.log('LinkUp is on port ' + port);
+  require('./app/routes.js')(app, passport, db, upload, client);
+}); // connect to our database
