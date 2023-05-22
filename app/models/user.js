@@ -1,51 +1,51 @@
 // load the things we need
-var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+let mongoose = require('mongoose');
+let bcrypt = require('bcrypt-nodejs');
 
 // define the schema for our user model
-var userSchema = mongoose.Schema({
+let userSchema = mongoose.Schema({
 
-    firstname : String,
-    lastname : String,
-    propic : String,
-    username : String,
-    phone : String,
-    birthday : String,
+    firstname: String,
+    lastname: String,
+    propic: String,
+    username: String,
+    phone: String,
+    birthday: String,
 
     image: String,
 
-    friends : [],
+    friends: [],
 
-    title : String,
-    desc : String,
-    date : String,
-    priority : String,
+    title: String,
+    desc: String,
+    date: String,
+    priority: String,
 
 
 
-    local            : {
-        email        : String,
-        password     : String,
-        firstname    : String,
-        lastname     : String,
+    local: {
+        email: String,
+        password: String,
+        firstname: String,
+        lastname: String,
     },
-    facebook         : {
-        id           : String,
-        token        : String,
-        name         : String,
-        email        : String
+    facebook: {
+        id: String,
+        token: String,
+        name: String,
+        email: String
     },
-    twitter          : {
-        id           : String,
-        token        : String,
-        displayName  : String,
-        username     : String
+    twitter: {
+        id: String,
+        token: String,
+        displayName: String,
+        username: String
     },
-    google           : {
-        id           : String,
-        token        : String,
-        email        : String,
-        name         : String
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
     }
 
 });
@@ -54,12 +54,12 @@ var userSchema = mongoose.Schema({
 
 
 // generating a hash
-userSchema.methods.generateHash = function(password) {
+userSchema.methods.generateHash = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 // checking if password is valid
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 

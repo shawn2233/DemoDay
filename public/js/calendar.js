@@ -1,11 +1,11 @@
 //global variables
-var monthEl = $(".c-main");
-var dataCel = $(".c-cal__cel");
-var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1;
-var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear();
-var monthText = [
+const monthEl = $(".c-main");
+const dataCel = $(".c-cal__cel");
+const dateObj = new Date();
+const month = dateObj.getUTCMonth() + 1;
+const day = dateObj.getUTCDate();
+const year = dateObj.getUTCFullYear();
+const monthText = [
     "January",
     "February",
     "March",
@@ -19,19 +19,19 @@ var monthText = [
     "November",
     "December"
 ];
-var indexMonth = month;
-var todayBtn = $(".c-today__btn");
-var addBtn = $(".js-event__add");
-var saveBtn = $(".js-event__save");
-var closeBtn = $(".js-event__close");
-var winCreator = $(".js-event__creator");
-var inputDate = $(this).data();
+const indexMonth = month;
+const todayBtn = $(".c-today__btn");
+const addBtn = $(".js-event__add");
+const saveBtn = $(".js-event__save");
+const closeBtn = $(".js-event__close");
+const winCreator = $(".js-event__creator");
+const inputDate = $(this).data();
 today = year + "-" + month + "-" + day;
 
 
 // ------ set default events -------
 function defaultEvents(dataDay, dataName, dataNotes, classTag) {
-    var date = $('*[data-day=' + dataDay + ']');
+    const date = $('*[data-day=' + dataDay + ']');
     date.attr("data-name", dataName);
     date.attr("data-notes", dataNotes);
     date.addClass("event");
@@ -49,10 +49,10 @@ function defaultEvents(dataDay, dataName, dataNotes, classTag) {
 //button of the current day
 todayBtn.on("click", function () {
     if (month < indexMonth) {
-        var step = indexMonth % month;
+        const step = indexMonth % month;
         movePrev(step, true);
     } else if (month > indexMonth) {
-        var step = month - indexMonth;
+        step = month - indexMonth;
         moveNext(step, true);
     }
 });
@@ -83,10 +83,10 @@ closeBtn.on("click", function () {
     $("body").removeClass("overlay");
 });
 saveBtn.on("click", function () {
-    var inputName = $("input[name=name]").val();
-    var inputDate = $("input[name=date]").val();
-    var inputNotes = $("textarea[name=notes]").val();
-    var inputTag = $("select[name=tags]")
+    const inputName = $("input[name=name]").val();
+    const inputDate = $("input[name=date]").val();
+    const inputNotes = $("textarea[name=notes]").val();
+    const inputTag = $("select[name=tags]")
         .find(":selected")
         .text();
 
@@ -126,12 +126,12 @@ saveBtn.on("click", function () {
 //fill sidebar event info
 function fillEventSidebar(self) {
     $(".c-aside__event").remove();
-    var thisName = self.attr("data-name");
-    var thisNotes = self.attr("data-notes");
-    var thisImportant = self.hasClass("event--important");
-    var thisBirthday = self.hasClass("event--birthday");
-    var thisFestivity = self.hasClass("event--festivity");
-    var thisEvent = self.hasClass("event");
+    const thisName = self.attr("data-name");
+    const thisNotes = self.attr("data-notes");
+    const thisImportant = self.hasClass("event--important");
+    const thisBirthday = self.hasClass("event--birthday");
+    const thisFestivity = self.hasClass("event--festivity");
+    const thisEvent = self.hasClass("event");
 
     switch (true) {
         case thisImportant:
@@ -173,11 +173,11 @@ function fillEventSidebar(self) {
     }
 };
 dataCel.on("click", function () {
-    var thisEl = $(this);
-    var thisDay = $(this)
+    const thisEl = $(this);
+    const thisDay = $(this)
         .attr("data-day")
         .slice(8);
-    var thisMonth = $(this)
+    const thisMonth = $(this)
         .attr("data-day")
         .slice(5, 7);
 
@@ -193,7 +193,7 @@ dataCel.on("click", function () {
 
 //function for move the months
 function moveNext(fakeClick, indexNext) {
-    for (var i = 0; i < fakeClick; i++) {
+    for (let i = 0; i < fakeClick; i++) {
         $(".c-main").css({
             left: "-=100%"
         });
@@ -208,7 +208,7 @@ function moveNext(fakeClick, indexNext) {
     }
 }
 function movePrev(fakeClick, indexPrev) {
-    for (var i = 0; i < fakeClick; i++) {
+    for (let i = 0; i < fakeClick; i++) {
         $(".c-main").css({
             left: "+=100%"
         });
