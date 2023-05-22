@@ -76,10 +76,11 @@ module.exports = function (app, passport, db, upload, client) {
 
   app.post("/accountpp", upload.single("imageUpload"), (req, res) => {
     console.log("updating DB", req.file);
-    req.user.propic = req.file.filename
+    let propic = req.file.filename
     req.user.save().then(() => {
       res.render('account-profile.ejs', {
-        user: req.user
+        user: req.user,
+        propic: propic
       })
     })
   });

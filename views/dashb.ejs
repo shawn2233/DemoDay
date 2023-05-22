@@ -68,9 +68,11 @@
                                         <div class="d-flex flex-column justify-content-center">
                                             <div class="text-center px-0 px-lg-5">
                                                 <h5>Newsfeed</h5>
-                                                <h2>Latest: <%=lastDoc.msg%> <%=lastDoc.createdAt.toLocaleString()%></h2>
+                                                <% if(lastDoc) { %>
+                                                   <h2>Latest: <%=lastDoc.msg%> <%=lastDoc.createdAt.toLocaleString()%></h2>
+                                                <% } %>
                                                 <ul class="messages">
-                                                    <% for(var i=0; i<3; i++) {%>
+                                                    <% for(let i=0; i<2; i++) {%>
                                                       <li class="message">
                                                         <span><%= messages[i].name %> _Posted: </span>
                                                         <span><%= messages[i].msg %></span>
