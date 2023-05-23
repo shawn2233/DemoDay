@@ -185,7 +185,7 @@ module.exports = function (app, passport, db, upload, client) {
     console.log("put add", req.body.userid)
     db.collection('users')
       .findOneAndUpdate({ _id: req.user._id },
-        { $addToSet: { friends: ObjectID(req.body.userid) } },
+        { $addToSet: { friends: req.body.userid } },
         (err, result) => {
           if (err) return res.send(err)
           res.send(result)
